@@ -15,3 +15,4 @@ add_subdirectory(external/imgui EXCLUDE_FROM_ALL)
 
 # Add subdirectories for executables
 add_subdirectory(RPNCalculator)
+add_subdirectory(ConsoleApp)
