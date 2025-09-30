@@ -6,15 +6,80 @@ A transformer-based language model that **learns mathematics from scratch** thro
 
 This project features a **self-learning mathematical AI** that discovers arithmetic patterns through training rather than using hardcoded rules. The transformer model learns to:
 - Understand and evaluate mathematical expressions
-- Solve equations with variables  
+- Solve equations with variables
 - Remember assigned values across sessions
 - Perform arithmetic operations it was never explicitly programmed to do
 
 It learns math the same way large language models learn language - through pattern recognition in training data.
 
+## Python Components
 
-## Features
+### Core Math LLM
+- **Training Pipeline** (`train.py`): Full training loop with mixed precision, gradient clipping, TensorBoard logging, and checkpoint management
+- **Inference Engine** (`math_llm.py`): Interactive session support with variable persistence and expression evaluation
+- **Transformer Model** (`math_transformer.py`): Custom transformer architecture optimized for mathematical expressions
+- **Tokenizer** (`math_tokenizer.py`): Specialized tokenizer for math syntax including operators, functions, and variables
+- **Expression Evaluator** (`expression_evaluator.py`): Parse and evaluate mathematical expressions with variable support
+- **Data Generator** (`data_generator.py`): Synthetic training data generation for mathematical expressions
+- **Value Storage** (`value_storage.py`): SQLite-based persistent storage for variables and statistics
 
+### Getting Started with Python
+
+1. **Install Dependencies**:
+```bash
+pip install torch pyyaml tqdm tensorboard numpy
+```
+
+2. **Configure Training** (edit `config.yaml`):
+```yaml
+model:
+  hidden_size: 512
+  num_layers: 6
+  num_attention_heads: 8
+training:
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 0.0001
+```
+
+3. **Train the Model**:
+```bash
+python train.py
+```
+
+4. **Run Interactive Session**:
+```bash
+python math_llm.py --interactive
+```
+
+5. **Example Usage**:
+```python
+>>> a = 5
+SUCCESS: a = 5.0
+>>> b = a * 2
+SUCCESS: b = 10.0
+>>> c = sqrt(a^2 + b^2)
+SUCCESS: c = 11.180339887498949
+>>> /vars
+Current variables:
+  a = 5.0
+  b = 10.0
+  c = 11.180339887498949
+```
+
+### Python Features
+
+- **Self-Learning**: Transformer model learns mathematical patterns from generated data
+- **Interactive REPL**: Command-line interface with persistent variable storage
+- **Expression Evaluation**: Supports arithmetic, trigonometric, and algebraic operations
+- **Batch Processing**: Process multiple expressions programmatically
+- **Model Checkpointing**: Save and resume training with full state persistence
+- **TensorBoard Integration**: Monitor training metrics in real-time
+- **Mixed Precision Training**: Efficient GPU utilization with automatic mixed precision
+
+## C++ Components
+
+### RPN Calculators
 - **RPN Calculator (GUI)**: Windows application with ImGui interface for Reverse Polish Notation calculations
 - **RPN Calculator (Console)**: Colorful command-line RPN calculator with rang.hpp
 - **CMake Build System**: Modern CMake configuration with organized build structure
@@ -24,20 +89,34 @@ It learns math the same way large language models learn language - through patte
 
 ```
 PyLLM/
-├── Bin/                      # All executables output here
-├── RPNCalculator/            # Windows GUI RPN calculator
-│   ├── CMakeLists.txt
-│   └── main.cpp
-├── ConsoleApp/               # Console RPN calculator
-│   ├── CMakeLists.txt
-│   └── main.cpp
-├── external/                 # External dependencies
-│   ├── imgui/               # ImGui submodule
-│   └── rang/                # rang.hpp for colors
-└── CMakeLists.txt           # Root CMake configuration
+├── Python Components
+│   ├── train.py                    # Training pipeline
+│   ├── math_llm.py                 # Inference and interactive session
+│   ├── math_transformer.py         # Transformer model architecture
+│   ├── math_tokenizer.py           # Mathematical expression tokenizer
+│   ├── expression_evaluator.py     # Expression parsing and evaluation
+│   ├── data_generator.py           # Training data generation
+│   ├── value_storage.py            # Variable persistence (SQLite)
+│   ├── example_usage.py            # Usage examples
+│   ├── config.yaml                 # Training configuration
+│   └── requirements.txt            # Python dependencies
+│
+├── C++ Components
+│   ├── Bin/                        # All executables output here
+│   ├── RPNCalculator/              # Windows GUI RPN calculator
+│   │   ├── CMakeLists.txt
+│   │   └── main.cpp
+│   ├── ConsoleApp/                 # Console RPN calculator
+│   │   ├── CMakeLists.txt
+│   │   └── main.cpp
+│   └── external/                   # External dependencies
+│       ├── imgui/                  # ImGui submodule
+│       └── rang/                   # rang.hpp for colors
+│
+└── CMakeLists.txt                  # Root CMake configuration
 ```
 
-## Building
+## Building C++ Components
 
 ### Prerequisites
 
@@ -68,7 +147,7 @@ cmake --build . --config Release
 
 All executables will be in the `Bin/` directory.
 
-## Applications
+## C++ Applications
 
 ### ConsoleApp - RPN Calculator (Console)
 
