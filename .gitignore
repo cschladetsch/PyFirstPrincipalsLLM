@@ -7,6 +7,15 @@ Bin/
 .vs/
 *.suo
 *.user
+.claude/
 
 # ImGui config
 imgui.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.json
+config.yaml
