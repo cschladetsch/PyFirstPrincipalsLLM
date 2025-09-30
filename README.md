@@ -1,6 +1,17 @@
 # PyLLM Project
 
-A C++ project featuring multiple applications built with CMake, including a Windows GUI RPN calculator and a colorful console RPN calculator.
+A transformer-based language model that **learns mathematics from scratch** through self-training, plus C++ RPN calculator applications.
+
+## What Makes This Special
+
+This project features a **self-learning mathematical AI** that discovers arithmetic patterns through training rather than using hardcoded rules. The transformer model learns to:
+- Understand and evaluate mathematical expressions
+- Solve equations with variables  
+- Remember assigned values across sessions
+- Perform arithmetic operations it was never explicitly programmed to do
+
+It learns math the same way large language models learn language - through pattern recognition in training data.
+
 
 ## Features
 
