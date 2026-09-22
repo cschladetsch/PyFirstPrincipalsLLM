@@ -1,0 +1,4 @@
+title: PyLLM
+description: A transformer-based language model that learns mathematics from scratch through self-training - discovering arithmetic patterns rather than using hardcoded rules - plus companion C++ RPN calculator applications.
+theme: null
+markdown: kramdown

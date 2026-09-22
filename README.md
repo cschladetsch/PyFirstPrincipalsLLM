@@ -1,5 +1,8 @@
 # PyLLM Project
 
+📖 [Docs & diagrams](https://cschladetsch.github.io/PyFirstPrincipalsLLM/)
+
+
 A transformer-based language model that **learns mathematics from scratch** through self-training, plus C++ RPN calculator applications.
 
 ## What Makes This Special
